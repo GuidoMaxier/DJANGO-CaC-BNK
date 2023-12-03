@@ -1,15 +1,20 @@
 from django.db import models
 
 class Deporte(models.Model):
-    nombre = models.CharField(max_length=255)
+    nombre = models.CharField(max_length=255, unique=True)
 
 class Equipo(models.Model):
-    nombre = models.CharField(max_length=255)
-    logo = models.ImageField(upload_to='imagenes/', null=True, verbose_name='Logo')
+    nombre = models.CharField(max_length=255, unique=True)
     deporte = models.ForeignKey(Deporte, on_delete=models.CASCADE)
+    logo = models.ImageField(upload_to='imagenes/', null=True, verbose_name='Logo')
 
 class Jugador(models.Model):
     nombre = models.CharField(max_length=255)
-    equipo = models.ForeignKey(Equipo, on_delete=models.CASCADE)
+    dni = models.IntegerField(unique=True)
+    fecha_nacimiento = models.DateField(null=True, blank=True)
+    equipo = models.ForeignKey('Equipo', on_delete=models.CASCADE)
     # Agrega otros campos necesarios para un jugador
+
+    def __str__(self):
+        return self.nombre
 
