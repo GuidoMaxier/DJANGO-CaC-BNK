@@ -47,7 +47,7 @@ def create_equipo(request):
     return Response(data=response, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
-def detail_equipo(request, id):
+def get_equipo(request, id):
     """
     Muestra una Equipo.
     """
