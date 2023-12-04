@@ -100,7 +100,7 @@ def delete_equipo(request, id):
         equipo = Equipo.objects.get(pk=id)        
     except Equipo.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND,data='Recurso no encontrado')
-    #Se elimina la pelicula en base de datos
+    #Se elimina el equipo en base de datos
     equipo.delete()
     return Response({'message':'Se elimino el Equipo'},status=status.HTTP_200_OK)
 
