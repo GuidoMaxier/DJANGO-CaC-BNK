@@ -47,6 +47,7 @@ CORS_ALLOWED_ORIGINS=[
     "http://127.0.0.1:3001",
 ]
 
+# CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -71,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'

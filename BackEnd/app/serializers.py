@@ -20,4 +20,4 @@ class JugadorSerializer(serializers.ModelSerializer):
     class Meta:
         #Hacemos correspondencia del serializador con la el modelo
         model = Jugador
-        fields = ['id','nombre', 'equipo']                
+        fields = ['id','nombre', 'fecha_nacimiento', 'dni', 'equipo']                
