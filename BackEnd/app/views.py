@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+
 from app.models import Equipo, Jugador
 
 from app import serializers
@@ -205,7 +206,13 @@ def get_equipo_detalles(request, nombre_equipo):
     return Response(respuesta)
 
 
+def serve_image(request):
+    # ... lógica para obtener la imagen ...
+    image_data = ...  # Obtén los datos de la imagen
 
+    response = HttpResponse(image_data, content_type="image/jpeg")
+    response["Cross-Origin-Embedder-Policy"] = "require-corp"
+    return response
 
 
 

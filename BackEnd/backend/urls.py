@@ -29,17 +29,8 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) 
 #se permite que los archivos en el directorio media pudan ser accedidos
 
+# Configuración para servir archivos estáticos y multimedia en el entorno de desarrollo
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-
-# urls.py
-# from django.urls import path, include
-# from rest_framework.routers import DefaultRouter
-# from .views import EquipoViewSet, JugadorViewSet
-
-# router = DefaultRouter()
-# router.register(r'equipos', EquipoViewSet)
-# router.register(r'jugadores', JugadorViewSet)
-
-# urlpatterns = [
-#     path('api/', include(router.urls)),
-# ]

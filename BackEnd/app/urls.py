@@ -9,9 +9,9 @@ urlpatterns = [
     path('equipos/', views.get_equipos, name='get_equipos_app'),
     path('equipo/<int:id>/', views.get_equipo, name='get_equipo_by_id_app'),
 
-    path('create_equipo/', views.create_equipo,name='create_equipo_app'),
-    path('update_equipo/<int:id>/', views.update_equipo,name='update_equipo_app'),
-    path('delete_equipo/<int:id>', views.delete_equipo,name='delete_equipo_app'),
+    path('create_equipo/', views.create_equipo, name='create_equipo_app'),
+    path('update_equipo/<int:id>/', views.update_equipo, name='update_equipo_app'),
+    path('delete_equipo/<int:id>/', views.delete_equipo, name='delete_equipo_app'),
 
 
     ### JUGADOR ###
