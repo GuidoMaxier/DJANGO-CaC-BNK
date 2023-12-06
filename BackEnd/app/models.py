@@ -17,7 +17,7 @@ class Jugador(models.Model):
     dni = models.IntegerField(unique=True)
     fecha_nacimiento = models.DateField(null=True, blank=True)
     equipo = models.ForeignKey('Equipo', on_delete=models.CASCADE)
-    # nos faltan mas atributos de un jugador  ??
+    
 
     def __str__(self):
         return self.nombre
