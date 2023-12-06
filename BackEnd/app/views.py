@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
+
 from app.models import Equipo, Jugador
 
 from app import serializers
@@ -22,6 +23,8 @@ def get_equipos(request):
     """
     Lista todos los equipos.
     """
+    response = HttpResponse()
+    response["Cross-Origin-Embedder-Policy"] = "require-corp"
     #se buscan todos los registros guardados en la base
     equipos = Equipo.objects.all() 
     #cuando estás serializando múltiples instancias de un modelo
@@ -206,13 +209,6 @@ def get_equipo_detalles(request, nombre_equipo):
     return Response(respuesta)
 
 
-def serve_image(request):
-    # ... lógica para obtener la imagen ...
-    image_data = ...  # Obtén los datos de la imagen
-
-    response = HttpResponse(image_data, content_type="image/jpeg")
-    response["Cross-Origin-Embedder-Policy"] = "require-corp"
-    return response
 
 
 
