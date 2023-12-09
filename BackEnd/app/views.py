@@ -17,6 +17,30 @@ def index(request):
     return HttpResponse('<h1>Estas en el prefijo de la API</h1>')
 
 
+### CREATE DEPORTE ####
+@api_view(['POST'])
+def create_deporte(request):
+    """
+    Crea un deporte
+    """
+    #Se seriala los datos recibidos desde el formulario
+    serializer = serializers.EquipoSerializer(data=request.data)
+    #Se ejecutan las validaciones
+    if serializer.is_valid():
+        #Se registra en base de datos
+        serializer.save()
+        #Se genera la respuesta que deseamos devolver
+        response = {'status':'Ok',
+                    'message':'deporte CREADO correctamente',
+                    'data':serializer.data}
+        return Response(data= response, status=status.HTTP_201_CREATED)
+    
+    response = {'status':'Error',
+                'message':'No se pudo CREAR el equipo',
+                'errors':serializer.errors}
+    return Response(data=response, status=status.HTTP_400_BAD_REQUEST)
+
+
 ### CRUD EQUIPO ####
 @api_view(['GET']) 
 def get_equipos(request):
@@ -107,6 +131,9 @@ def delete_equipo(request, id):
     #Se elimina el equipo en base de datos
     equipo.delete()
     return Response({'message':'Se elimino el Equipo'},status=status.HTTP_200_OK)
+
+
+
 
 
 

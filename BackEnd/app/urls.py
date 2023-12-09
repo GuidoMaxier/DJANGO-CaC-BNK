@@ -5,6 +5,10 @@ from . import views
 urlpatterns = [
     path('', views.index, name='inicio_app'),
 
+
+    ### DEPORTE ###
+    path('create_deporte/', views.create_deporte, name='create_deporte_app'), 
+
     ### EQUIPOS ###
     path('equipos/', views.get_equipos, name='get_equipos_app'), #OK
     path('equipo/<int:id>/', views.get_equipo, name='get_equipo'), #OK
