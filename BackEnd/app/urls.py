@@ -8,6 +8,7 @@ urlpatterns = [
 
     ### DEPORTE ###
     path('create_deporte/', views.create_deporte, name='create_deporte_app'), 
+    path('deportes/', views.get_deportes, name='get_deportes_app'), 
 
     ### EQUIPOS ###
     path('equipos/', views.get_equipos, name='get_equipos_app'), #OK

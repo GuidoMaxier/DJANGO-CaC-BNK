@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from app.models import Equipo, Jugador
+from app.models import Equipo, Jugador, Deporte
 
 from app import serializers
 
@@ -22,7 +22,7 @@ def create_deporte(request):
     Crea un deporte
     """
     #Se seriala los datos recibidos desde el formulario
-    serializer = serializers.EquipoSerializer(data=request.data)
+    serializer = serializers.DeporteSerializer(data=request.data)
     #Se ejecutan las validaciones
     if serializer.is_valid():
         #Se registra en base de datos
@@ -34,10 +34,25 @@ def create_deporte(request):
         return Response(data= response, status=status.HTTP_201_CREATED)
     
     response = {'status':'Error',
-                'message':'No se pudo CREAR el equipo',
+                'message':'No se pudo CREAR el Deporte',
                 'errors':serializer.errors}
     return Response(data=response, status=status.HTTP_400_BAD_REQUEST)
 
+
+@api_view(['GET']) 
+def get_deportes(request):
+    """
+    Lista todos los deportes.
+    """
+    response = HttpResponse()
+    response["Cross-Origin-Embedder-Policy"] = "require-corp"
+    #se buscan todos los registros guardados en la base
+    deportes = Deporte.objects.all() 
+    #cuando estás serializando múltiples instancias de un modelo
+    serializer = serializers.DeporteSerializer(deportes, many=True)
+    #Response es una clase que me permite devolver una respuesta
+    #que cumple con los estandares de API-REST
+    return Response(serializer.data)
 
 ### CRUD EQUIPO ####
 @api_view(['GET']) 
