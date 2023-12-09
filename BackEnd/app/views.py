@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-
-
 from app.models import Equipo, Jugador
 
 from app import serializers
