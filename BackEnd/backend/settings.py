@@ -34,9 +34,11 @@ SECRET_KEY = env('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+
+#para la version en produccion
+ALLOWED_HOSTS = ['guidomaxier.pythonanywhere.com'] 
 
 
 CORS_ALLOWED_ORIGINS=[
